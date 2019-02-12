@@ -58,7 +58,6 @@ var movieObject = {
     genre: "Action",
     length: "Longer",
     rating: "PG",
-    latLong: "36.827, 175.790",
 },
     movie2: {
     name: 'Night at the Museum',
@@ -371,6 +370,35 @@ var movieObject = {
 
 
 });
+
+
+
+// tashas code for google api
+
+
+{lat: -34.397, lng: 150.644}
+    
+//$(this).append(latLong);
+
+
+  
+    var map;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), { 
+     
+        center: $(this).append(latLong),
+
+        zoom: 8
+        
+      });
+    }
+    
+    
+
+
+
+
 
 
 //function got get survey name and zipcode
