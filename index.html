@@ -30,11 +30,11 @@
     <!-- survey is in this div that starts hiden then will be shown -->
     <div id=movieSurvey_container>
         <!-- logo again to use -->
-        <h1 class="logo">Movie Goer Survey</h1>
+     
         <!-- questions will go here -->
         <form id="frm1" action="/action_page.php">
             Enter Name: <input type="text" id="userID" value="Name"><br>
-            Enter Zipcode: <input type="text" id="userZipcode" value="Zipcode"><br><br>
+            Enter Your City: <input type="text" id="userCity" value="City"><br><br>
         </form>
         <h3>1. What is your preferred movie genre?</h3>
         <!-- var for genre is taken from here -->
@@ -58,16 +58,65 @@
 
         <h3>Click Done! when finished</h3>
         <button id=done_button>Done!</button>
-        <div id="map"></div>
+        
+        
 
     </div>
 
-    <div id = end_container>
-          
+    <div id ="end_container">
+        <p>hi i am the end</p>
+        <div id="endPoint"></div>
+        <div id="map"></div>
+    </div>
+<script>
+  
+
+
+
+    function initMap() {
+        
+     
+  
+        var map = new google.maps.Map(document.getElementById('map'),
+            {
+           
+               zoom: 8,
+            }
+        );
+    
+
+            var directionsDisplay = new google.maps.DirectionsRenderer();// also, constructor can get "DirectionsRendererOptions" object
+            directionsDisplay.setMap(map); // map should be already initialized.
+        
+            var request = {
+                origin : "" + userCity,
+                destination : "" + endPoint,
+                travelMode : google.maps.TravelMode.DRIVING
+            };
+            var directionsService = new google.maps.DirectionsService(); 
+            directionsService.route(request, function(response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                }
+            });
+         
+    
+         
+    }
+
+
+
+</script>
+
+
+
+
+
+
+
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDClN8Ffd-K6dipkrlD1CjZZTdyvSq4z98&callback=initMap"></script>
 
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="assets/main.js"></script>
 </body>
 
